@@ -1,0 +1,70 @@
+<div class="mt-5">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col">
+        <div class="col-6">
+          <b>Seleccione Ciudad Origen</b>
+        </div>
+        <div class="col-6">
+          <div class="form-check form-switch" *ngFor="let ciudad of listaCiudades[0]" (click)="guardarCiudadOrigen(ciudad)">
+            <input class="form-check-input" type="radio" name="flexRadioOrigen" id="flexRadioOrigen">
+            <label class="form-check-label" for="flexRadioOrigen">
+              {{ciudad.nombreCiudad}}
+            </label>
+          </div>          
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="col-6">
+          <b>Seleccione Ciudad Destino</b>
+        </div>
+        <div class="col-6">
+          <div class="form-check form-switch" *ngFor="let ciudad of listaCiudades[0]" (click)="guardarCiudadDestino(ciudad)">
+            <input class="form-check-input" type="radio" name="flexRadioDestino" id="flexRadioDestino">
+            <label class="form-check-label" for="flexRadioDestino">
+              {{ciudad.nombreCiudad}}
+            </label>
+          </div>          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="idCiudadOrigenSelected > 0 && idCiudadDestinoSelected > 0" class="mt-5">
+    <div class="container text-center mt-5">
+      <div class="row">
+        <div class="col-12">
+          <input class="btn btn-primary" type="button" value="Consultar Destinos" (click)="consultarDestinosSeleccionados()">
+        </div>
+      </div>
+    </div> 
+  
+    <div>
+        <div class="shadow-none p-3 mt-5 text-bg-primary opacity-75 rounded">Resultados Obtenidos</div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Ciudad Origen</th>
+              <th scope="col">Aeropuerto Origen</th>
+              <th scope="col">Ciudad Destino</th>
+              <th scope="col">Aeropuerto Destino</th>
+              <th scope="col">Duración de Vuelo</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            <tr>
+              <th scope="row">1</th>
+              <td>{{datosEncontrados.ciudadOrigen}}</td>
+              <td>{{datosEncontrados.aeropuertoCiudadOrigen}}</td>
+              <td>{{datosEncontrados.ciudadDestino}}</td>
+              <td>{{datosEncontrados.aeropuertoCiudadDestino}}</td>
+              <td>{{datosEncontrados.tiempoVuelo}} horas</td>
+            </tr>            
+          </tbody>
+        </table>
+    </div>
+  </div>
+  
+</div>
